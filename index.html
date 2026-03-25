@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Population Projections Assistant (beta) | Sample | ArcGIS Maps SDK for JavaScript</title>
+    <!-- Load the ArcGIS Maps SDK for JavaScript from CDN -->
+    <script type="module" src="https://js.arcgis.com/5.0/"></script>
+  </head>
+
+  <body>
+    <calcite-shell>
+      <arcgis-map id="population-projections" item-id="06003f5b4779403d8bf8af3af02fe7cf">
+        <arcgis-zoom slot="top-left"></arcgis-zoom>
+        <arcgis-expand slot="top-left">
+          <arcgis-legend></arcgis-legend>
+        </arcgis-expand>
+      </arcgis-map>
+      <calcite-shell-panel slot="panel-end" width="l" id="assistant-panel">
+        <calcite-panel>
+          <arcgis-assistant
+            log-enabled
+            copy-enabled
+            reference-element="#population-projections"
+            heading="Population Projection RTP23"
+            description="Explore WFRC's Population Forecast from the 2023-2050 Regional Transportation Plan."
+            entry-message="Hello! Ask  me a question about population in the WFRC-MAG Region">
+            <arcgis-assistant-navigation-agent></arcgis-assistant-navigation-agent>
+            <arcgis-assistant-data-exploration-agent></arcgis-assistant-data-exploration-agent>
+            <arcgis-assistant-help-agent></arcgis-assistant-help-agent>
+          </arcgis-assistant>
+        </calcite-panel>
+      </calcite-shell-panel>
+    </calcite-shell>
+
+    <script type="module">
+      const assistantElement = document.querySelector("arcgis-assistant");
+      const mapElement = document.querySelector("arcgis-map");
+      assistantElement.suggestedPrompts = [
+        "What is the total population of salt lake county in 2050?",
+        "Pan to the TAZ that had the highest total population in 2030",
+        "Filter the zones where DEVACRES > 300 and highlight them",
+      ];
+    </script>
+  </body>
+</html>
